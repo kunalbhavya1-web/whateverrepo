@@ -1,0 +1,1062 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Before You Give Up On Us</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Great+Vibes&display=swap" rel="stylesheet">
+
+<style>
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --navy: #081426;
+  --blue: #203b5a;
+  --light: #dce6ef;
+  --silver: #a9bfd4;
+}
+
+body {
+  background: var(--navy);
+  color: #f0eee9;
+  font-family: 'Cormorant Garamond', serif;
+  overflow-x: hidden;
+}
+
+button {
+  background: transparent;
+  color: var(--light);
+  border: 1px solid #8da6bf;
+  padding: 13px 30px;
+  letter-spacing: 2px;
+  cursor: pointer;
+  font-family: inherit;
+  font-size: 16px;
+  transition: .35s;
+  margin: 10px;
+}
+
+button:hover {
+  background: var(--light);
+  color: var(--navy);
+  transform: translateY(-3px);
+}
+
+.hidden {
+  display: none !important;
+}
+
+/* BACKGROUND */
+
+#stars {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.star {
+  position: absolute;
+  width: 3px;
+  height: 3px;
+  background: white;
+  border-radius: 50%;
+  animation: twinkle 3s infinite alternate;
+}
+
+@keyframes twinkle {
+  from { opacity: .15; transform: scale(.7); }
+  to { opacity: 1; transform: scale(1.5); }
+}
+
+.particle {
+  position: fixed;
+  color: #b6cce0;
+  pointer-events: none;
+  animation: float 8s linear forwards;
+  z-index: 0;
+}
+
+@keyframes float {
+  0% { transform: translateY(100vh) rotate(0); opacity: 0; }
+  20% { opacity: .7; }
+  100% { transform: translateY(-100px) rotate(180deg); opacity: 0; }
+}
+
+/* PAGES */
+
+.screen {
+  min-height: 100vh;
+  width: 100%;
+  position: relative;
+  z-index: 1;
+  padding: 75px 25px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  background: radial-gradient(ellipse at center,
+    #203b5a 0%, #101f36 48%, #081426 100%);
+}
+
+.screen.entering {
+  animation: pageEnter .8s ease both;
+}
+
+@keyframes pageEnter {
+  from {
+    opacity: 0;
+    transform: translateY(22px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.subtitle {
+  letter-spacing: 5px;
+  font-size: 11px;
+  color: var(--silver);
+  margin-bottom: 25px;
+}
+
+h1 {
+  font-size: clamp(42px, 8vw, 76px);
+  font-weight: 400;
+  line-height: 1.1;
+}
+
+h1 span {
+  font-family: 'Great Vibes', cursive;
+  color: #b6cce0;
+  font-size: 1.15em;
+}
+
+h2 {
+  font-weight: 400;
+  font-size: clamp(35px, 6vw, 55px);
+  margin-bottom: 20px;
+}
+
+.script {
+  font-family: 'Great Vibes', cursive;
+  font-size: 45px;
+  color: #b6cce0;
+}
+
+.description {
+  font-size: 20px;
+  color: #c3cedb;
+  margin: 25px 0;
+}
+
+.small-note {
+  color: #a9bfd4;
+  font-size: 14px;
+  letter-spacing: 2px;
+  margin-top: 20px;
+}
+
+/* ENVELOPE */
+
+.envelope {
+  width: 150px;
+  height: 105px;
+  background: #d7d1c5;
+  position: relative;
+  margin: 35px auto;
+  cursor: pointer;
+  border-radius: 3px;
+  box-shadow: 0 12px 35px #0008;
+  transition: transform .4s;
+}
+
+.envelope:hover {
+  transform: translateY(-8px);
+}
+
+.envelope::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  border-left: 75px solid transparent;
+  border-right: 75px solid transparent;
+  border-top: 65px solid #b7b5b0;
+  transform-origin: top;
+  transition: transform .7s;
+  z-index: 2;
+}
+
+.envelope.open::before {
+  transform: rotateX(180deg);
+}
+
+.seal {
+  position: absolute;
+  top: 40px;
+  left: 62px;
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  background: #506c89;
+  color: white;
+  display: grid;
+  place-items: center;
+  z-index: 3;
+}
+
+/* LETTER */
+
+.letter {
+  max-width: 680px;
+  width: 100%;
+  padding: 55px 40px;
+  background: #eee9df;
+  color: #26364a;
+  text-align: center;
+  line-height: 1.9;
+  font-size: 20px;
+  box-shadow: 0 20px 50px #0005;
+}
+
+.letter h2 {
+  font-family: 'Great Vibes', cursive;
+  font-size: 48px;
+  margin-bottom: 25px;
+}
+
+.letter p {
+  margin-bottom: 17px;
+}
+
+/* NEW POLAROID GALLERY */
+
+.gallery-screen {
+  justify-content: flex-start;
+  padding-top: 65px;
+}
+
+.gallery-intro {
+  color: #c3cedb;
+  font-size: 19px;
+  margin: 10px 0 35px;
+}
+
+.gallery-wall {
+  width: min(1050px, 100%);
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 40px 35px;
+  padding: 35px 15px;
+  margin: 15px auto;
+}
+
+.polaroid {
+  width: 245px;
+  padding: 11px 11px 18px;
+  background: #f1eee7;
+  color: #28384c;
+  box-shadow: 0 15px 35px #0009;
+  cursor: pointer;
+  perspective: 1000px;
+  transition: transform .45s, box-shadow .45s;
+}
+
+.polaroid:nth-child(1) { transform: rotate(-7deg); }
+.polaroid:nth-child(2) { transform: rotate(5deg) translateY(18px); }
+.polaroid:nth-child(3) { transform: rotate(-3deg) translateY(-10px); }
+.polaroid:nth-child(4) { transform: rotate(7deg) translateY(12px); }
+
+.polaroid:hover {
+  transform: rotate(0deg) translateY(-12px) scale(1.04);
+  box-shadow: 0 25px 45px #000b;
+  z-index: 5;
+}
+
+.photo-inner {
+  position: relative;
+  width: 100%;
+  height: 225px;
+  transform-style: preserve-3d;
+  transition: transform .8s cubic-bezier(.2,.8,.2,1);
+}
+
+.polaroid.flipped .photo-inner {
+  transform: rotateY(180deg);
+}
+
+.photo-front, .photo-back {
+  position: absolute;
+  inset: 0;
+  backface-visibility: hidden;
+}
+
+.photo-front {
+  background: #d7dce0;
+  overflow: hidden;
+}
+
+.photo-front img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.photo-back {
+  transform: rotateY(180deg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  background: #dce6ef;
+  font-size: 20px;
+  line-height: 1.5;
+  text-align: center;
+}
+
+.caption {
+  font-family: 'Great Vibes', cursive;
+  font-size: 27px;
+  margin-top: 13px;
+}
+
+.tap-note {
+  font-size: 11px;
+  color: #788b9e;
+  letter-spacing: 2px;
+  margin-top: 8px;
+}
+
+/* LITTLE THINGS PAGE */
+
+.notes-screen {
+  justify-content: flex-start;
+  padding-top: 90px;
+}
+
+.notes-intro {
+  max-width: 600px;
+  font-size: 19px;
+  color: #c3cedb;
+  line-height: 1.7;
+  margin: 10px 0 45px;
+}
+
+.notes-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 25px;
+  width: min(900px, 100%);
+}
+
+.note-card {
+  width: 240px;
+  height: 260px;
+  perspective: 1000px;
+  cursor: pointer;
+}
+
+.note-inner {
+  position: relative;
+  height: 100%;
+  width: 100%;
+  transform-style: preserve-3d;
+  transition: transform .8s;
+}
+
+.note-card.opened .note-inner {
+  transform: rotateY(180deg);
+}
+
+.note-front, .note-back {
+  position: absolute;
+  inset: 0;
+  backface-visibility: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 25px;
+  box-shadow: 0 15px 35px #0006;
+}
+
+.note-front {
+  background: #dce6ef;
+  color: #26364a;
+}
+
+.note-front .number {
+  font-size: 7px;
+  letter-spacing: 1px;
+  color: #627d99;
+  margin-bottom: 25px;
+}
+
+.note-front .script {
+  color: #344f72;
+  font-size: 36px;
+}
+
+.note-front p:last-child {
+  font-size: 14px;
+  letter-spacing: 2px;
+  margin-top: 25px;
+}
+
+.note-back {
+  transform: rotateY(180deg);
+  background: #eee9df;
+  color: #26364a;
+  font-size: 12px;
+  line-height: 1.6;
+}
+
+.note-back .script {
+  color: #344f72;
+  font-size: 10px;
+  margin-bottom: 15px;
+}
+
+/* SURPRISE */
+
+.surprise-box {
+  max-width: 550px;
+  width: 100%;
+  padding: 35px;
+  border: 1px solid #607b98;
+  background: #152943;
+  margin: 30px 0;
+  box-shadow: 0 15px 45px #0005;
+}
+
+.gift {
+  font-size: 65px;
+  cursor: pointer;
+  display: inline-block;
+  transition: .5s;
+}
+
+.gift:hover {
+  transform: scale(1.15) rotate(8deg);
+}
+
+.surprise-message {
+  font-size: 21px;
+  line-height: 1.8;
+  color: #dce6ef;
+  margin-top: 20px;
+}
+
+/* FINAL PAGE */
+
+.final-message {
+  max-width: 700px;
+  line-height: 1.9;
+  font-size: 22px;
+  color: #d0dbe6;
+  margin: 20px auto;
+}
+
+.final-question {
+  font-family: 'Great Vibes', cursive;
+  font-size: clamp(42px, 8vw, 70px);
+  color: #b6cce0;
+  margin: 30px 0;
+}
+
+/* MUSIC */
+
+.music-control {
+  position: fixed;
+  top: 18px;
+  right: 18px;
+  z-index: 20;
+  background: #203b5a;
+  border: 1px solid #8da6bf;
+  border-radius: 30px;
+  padding: 10px 17px;
+  font-size: 13px;
+  margin: 0;
+}
+
+@media(max-width: 600px) {
+  .screen {
+    padding: 65px 18px;
+  }
+
+  .letter {
+    padding: 35px 23px;
+  }
+
+  .gallery-wall {
+    gap: 35px;
+  }
+
+  .polaroid {
+    width: min(260px, 90%);
+  }
+
+  .polaroid:nth-child(n) {
+    transform: rotate(0deg);
+  }
+
+  .polaroid:hover {
+    transform: translateY(-5px);
+  }
+
+  .notes-container {
+    gap: 25px;
+  }
+
+  .note-card {
+    width: min(260px, 90%);
+  }
+
+  .music-control {
+    top: 10px;
+    right: 10px;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<div id="stars"></div>
+
+<button class="music-control" onclick="toggleMusic()" id="musicButton">
+  ♫ MUSIC OFF
+</button>
+
+<audio id="backgroundMusic" loop>
+  <source src="your-song.mp3" type="audio/mpeg">
+</audio>
+
+
+<!-- PAGE 1: OPENING -->
+
+<section class="screen entering" id="home">
+
+  <p class="subtitle">A LITTLE SOMETHING FOR VRINDA</p>
+
+  <h1>
+    Before You <span>Give Up</span><br>
+    On Us.
+  </h1>
+
+  <p class="description">
+    Three years. Countless memories. One letter.
+  </p>
+
+  <div class="envelope" id="envelope">
+    <div class="seal">V</div>
+  </div>
+
+  <button onclick="openLetter()">
+    OPEN MY LETTER
+  </button>
+
+  <p class="small-note">A little corner of the internet, just for you.</p>
+
+</section>
+
+
+<!-- PAGE 2: LETTER -->
+
+<section class="screen hidden" id="letterPage">
+
+  <div class="letter">
+
+    <h2>Dear Mirinda,</h2>
+
+    <p>
+      I don't really know where to begin.
+      There are so many things I wish I had said
+      and so many things I wish I had done differently.
+    </p>
+
+    <p>
+      Three years of friendship mean more to me
+      than I probably ever managed to show.
+      And I'm genuinely sorry for the times
+      I made you feel otherwise.I never wanted all this to end never mai chahti thi ki like hum sab ek dusre ki shaadi me jayenge functions me jayenge and like yeah i dreamed about all or us being together.
+    </p>
+
+    <p>
+      Iknow i hurt you and made you feel unimportant but i want you to see the things which i never showed .I made this little corner of the internet
+      because I wanted to remember us
+      and tell you what I couldn't say properly.
+    </p>
+
+    <p>
+      I know a website cannot undo anything,
+      but I hope it can help me say what matters.Maine ye website maafi ke liye nhi banayi maine banayi hai tughe feel karane ke liye ki yes you are important to me which i might not have made you feel in recent months or idk how long.
+    </p>
+
+    <br>
+
+    <p><i>There's more to our story...</i></p>
+
+    <button onclick="showPage('galleryPage')">
+      CONTINUE →
+    </button>
+
+  </div>
+
+</section>
+
+
+<!-- PAGE 3: SCATTERED POLAROID GALLERY -->
+
+<section class="screen gallery-screen hidden" id="galleryPage">
+
+  <p class="subtitle">A LITTLE WALK DOWN MEMORY LANE</p>
+
+  <h2>Us, in little moments.</h2>
+
+  <p class="gallery-intro">
+    Some memories deserve to be kept forever.
+    TAP EACH PHOTOGRAPH
+  </p>
+
+  <div class="gallery-wall">
+
+    <div class="polaroid" onclick="flipCard(this)">
+      <div class="photo-inner">
+        <div class="photo-front">
+          <img src="sleepovr.jpeg
+" alt="Memory one">
+        </div>
+        <div class="photo-back">
+this was when we had our first sleepover jahan apan dono ne vo pohe pohe wala dance kiya tha or omegle chalaya tha
+        </div>
+      </div>
+      <p class="caption">The beginning.</p>
+      <p class="tap-note">TAP TO FLIP ↻</p>
+    </div>
+
+    <div class="polaroid" onclick="flipCard(this)">
+      <div class="photo-inner">
+        <div class="photo-front">
+          <img src="ddles.jpeg" alt="Memory two">
+        </div>
+        <div class="photo-back">
+          isme apan sab christmas ke liye doodles ja rhe the bhaisahab kitne maze aye the
+        </div>
+      </div>
+      <p class="caption">Our chaos.</p>
+      <p class="tap-note">TAP TO FLIP ↻</p>
+    </div>
+
+    <div class="polaroid" onclick="flipCard(this)">
+      <div class="photo-inner">
+        <div class="photo-front">
+          <img src="birthday.jpeg" alt="Memory three">
+        </div>
+        <div class="photo-back">
+                    this was when mera birthday tha vaise to isme meri photo eww hai but bhai humne matching karne ki koshish ki thi isme
+        </div>
+      </div>
+      <p class="caption">Little things.</p>
+      <p class="tap-note">TAP TO FLIP ↻</p>
+    </div>
+
+    <div class="polaroid" onclick="flipCard(this)">
+      <div class="photo-inner">
+        <div class="photo-front">
+          <img src="trip.jpeg"
+ alt="Memory four">
+
+        </div>
+        <div class="photo-back">
+          yahan siya ki hum sabse ladai ho gyi thi trip pe or hum raat ko kalesh karke ro rhe the tab apan dono ne ye click ki thi mind divert karne ke liye
+        </div>
+      </div>
+      <p class="caption">Still special.</p>
+      <p class="tap-note">TAP TO FLIP ↻</p>
+    </div>
+
+  </div>
+
+  <p class="small-note">
+    Every picture has a little story.
+  </p>
+
+  <button onclick="showPage('notesPage')">
+    THERE'S MORE →
+  </button>
+
+</section>
+
+
+<!-- PAGE 4: THINGS I NEVER SAID -->
+
+<section class="screen notes-screen hidden" id="notesPage">
+
+  <p class="subtitle">A FEW THINGS I NEVER SAID OUT LOUD</p>
+
+  <h2>Little things that matter.</h2>
+
+  <p class="notes-intro">
+    Not everything important gets said.
+    So I kept a few thoughts here.
+    Open each card.
+  </p>
+
+  <div class="notes-container">
+
+    <div class="note-card" onclick="flipNote(this)">
+      <div class="note-inner">
+
+        <div class="note-front">
+          <p class="number">NOTE NO. 01</p>
+          <p class="script">Thank you.</p>
+          <p>OPEN THIS NOTE ↗</p>
+        </div>
+
+        <div class="note-back">
+          <p class="script">For the memories.</p>
+          <p>
+            Thank you for all the little moments
+            that turned ordinary days into
+            something worth remembering.Thankyou for comming in my life and making it bloom like a flower i always wanted to have beautiful friends in my life and i got them i got you isiliye bohot bohot bada thankyou
+          </p>
+        </div>
+
+      </div>
+    </div>
+
+
+    <div class="note-card" onclick="flipNote(this)">
+      <div class="note-inner">
+
+        <div class="note-front">
+          <p class="number">NOTE NO. 02</p>
+          <p class="script">Honestly...</p>
+          <p>OPEN THIS NOTE ↗</p>
+        </div>
+
+        <div class="note-back">
+          <p class="script">You matter.</p>
+          <p>
+            I might not have shown it properly
+            every time, but your friendship
+            has always meant a lot to me and always here means always mughe pata hai mai bohot baar aisa bol deti hu jisse hurt hota hai not only to you but to everyone and mai janti hu mai yahan galat hu that is why i am here apologising to you and i know that apologising doesn't end this fight but i want to give it a try atleast cause you matter to me .
+          </p>
+        </div>
+
+      </div>
+    </div>
+
+
+    <div class="note-card" onclick="flipNote(this)">
+      <div class="note-inner">
+
+        <div class="note-front">
+          <p class="number">NOTE NO. 03</p>
+          <p class="script">One thing...</p>
+          <p>OPEN THIS NOTE ↗</p>
+        </div>
+
+        <div class="note-back">
+          <p class="script">I'm sorry.</p>
+          <p>
+            Not just because things changed,
+            but because I genuinely wish
+            I had handled some things differently.I wish i should have approached you before i wish i should have apologised before but yes mai thodi careless thi i know and admit and i feel the guilt i feel sorry genuinly.
+          </p>
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+
+  <p class="small-note">
+    Some things are easier to write than say.
+  </p>
+
+  <button onclick="showPage('surprisePage')">
+    ONE LAST THING →
+  </button>
+
+</section>
+
+
+<!-- PAGE 5: HIDDEN SURPRISE -->
+
+<section class="screen hidden" id="surprisePage">
+
+  <p class="subtitle">SOMETHING YOU DIDN'T KNOW WAS HERE</p>
+
+  <h2>A little surprise.</h2>
+
+  <p class="description">
+    I hid something here. Curious?
+  </p>
+
+  <div class="surprise-box">
+
+    <div class="gift" onclick="revealSurprise()" id="gift">
+      🎁
+    </div>
+
+    <p class="small-note">TAP THE GIFT TO OPEN</p>
+
+    <div class="surprise-message hidden" id="surpriseMessage">
+
+      <p class="script">Hey, Mirinda.</p>
+
+      <p>
+        No matter how many photographs we take,
+        they will never capture all the silly,
+        random and unforgettable things
+        that made these three years ours.All these photos and vedioes i have in my gallery and in my highlights they just remind me the vibe we used to share the bond we had and i just miss it i miss us a lot .
+      </p>
+
+      <br>
+
+      <p>
+        And honestly, I wouldn't trade those
+        memories for anything.
+      </p>
+
+    </div>
+
+  </div>
+
+  <button onclick="showPage('finalPage')">
+    READ MY LAST MESSAGE →
+  </button>
+
+</section>
+
+
+<!-- PAGE 6: FINAL MESSAGE -->
+
+<section class="screen hidden" id="finalPage">
+
+  <p class="subtitle">IF YOU'VE MADE IT THIS FAR...</p>
+
+  <h2>One last thing.
+  (ye thoda englishh me hai )</h2>
+
+  <div class="final-message">
+
+    <p>
+      I know things aren't necessarily the same
+      as they used to be.
+      And I know that just saying sorry
+      doesn't magically fix everything.
+    </p>
+
+    <br>
+
+    <p>
+      I don't expect everything to go back
+      to normal overnight.Par han mai ye wish karti hu ki please aisa ho jaye i am not forcing you but i wish and i really pray ki kash cheeze vaisi hi ho jaye jaisi thi.
+      I just wanted you to know that
+      this friendship has genuinely mattered to me.
+    </p>
+
+    <br>
+
+    <p>
+      Thank you for three years of memories,
+      laughter, madness and moments
+      that I'll always carry with me.And the more we will create agar aap mughe maaf kar doge to.
+    </p>
+
+    <br>
+
+    <p>
+      I am sorry, genuinely.
+    </p>
+
+  </div>
+
+  <p class="final-question">
+    Can we talk once Pleasee?
+  </p>
+
+  <p class="small-note">
+    No pressure. Just a little hope.
+  </p>
+
+  <button onclick="showPage('home')">
+    ↶ BACK TO THE BEGINNING
+  </button>
+
+  <p class="small-note">
+    Made with a lot of memories.
+  </p>
+
+</section>
+
+
+<script>
+
+// PAGE NAVIGATION WITH SMOOTH TRANSITIONS
+
+function showPage(pageId) {
+
+  document.querySelectorAll(".screen").forEach(page => {
+    page.classList.add("hidden");
+    page.classList.remove("entering");
+  });
+
+  const nextPage = document.getElementById(pageId);
+
+  nextPage.classList.remove("hidden");
+
+  void nextPage.offsetWidth;
+
+  nextPage.classList.add("entering");
+
+  window.scrollTo({
+    top: 0,
+    behavior: "smooth"
+  });
+
+}
+
+
+// OPEN ENVELOPE
+
+function openLetter() {
+
+  document.getElementById("envelope")
+    .classList.add("open");
+
+  setTimeout(() => {
+    showPage("letterPage");
+  }, 750);
+
+}
+
+
+// FLIP PHOTOGRAPHS
+
+function flipCard(card) {
+  card.classList.toggle("flipped");
+}
+
+
+// FLIP MESSAGE CARDS
+
+function flipNote(card) {
+  card.classList.toggle("opened");
+}
+
+
+// HIDDEN SURPRISE
+
+function revealSurprise() {
+
+  document.getElementById("surpriseMessage")
+    .classList.remove("hidden");
+
+  document.getElementById("gift").textContent = "💌";
+
+}
+
+
+// MUSIC BUTTON
+
+let musicPlaying = false;
+
+function toggleMusic() {
+
+  const music =
+    document.getElementById("backgroundMusic");
+
+  const button =
+    document.getElementById("musicButton");
+
+  if (!musicPlaying) {
+
+    music.play().then(() => {
+      musicPlaying = true;
+      button.textContent = "♫ MUSIC ON";
+    }).catch(() => {
+      alert("Please add your-song.mp3 to the website folder.");
+    });
+
+  } else {
+
+    music.pause();
+    musicPlaying = false;
+    button.textContent = "♫ MUSIC OFF";
+
+  }
+
+}
+
+
+// BACKGROUND STARS
+
+const stars = document.getElementById("stars");
+
+for (let i = 0; i < 90; i++) {
+
+  const star = document.createElement("div");
+
+  star.className = "star";
+  star.style.left = Math.random() * 100 + "%";
+  star.style.top = Math.random() * 100 + "%";
+  star.style.animationDelay = Math.random() * 3 + "s";
+
+  stars.appendChild(star);
+
+}
+
+
+// FLOATING PARTICLES
+
+const symbols = ["✦", "✧", "⋆", "·"];
+
+function createParticle() {
+
+  const particle = document.createElement("div");
+
+  particle.className = "particle";
+
+  particle.textContent =
+    symbols[Math.floor(Math.random() * symbols.length)];
+
+  particle.style.left = Math.random() * 100 + "vw";
+  particle.style.fontSize =
+    (10 + Math.random() * 15) + "px";
+
+  particle.style.animationDuration =
+    (5 + Math.random() * 6) + "s";
+
+  document.body.appendChild(particle);
+
+  setTimeout(() => {
+    particle.remove();
+  }, 11000);
+
+}
+
+setInterval(createParticle, 700);
+
+</script>
+
+</body>
+</html>
+
+
+
